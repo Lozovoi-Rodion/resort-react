@@ -1,11 +1,24 @@
 import React from 'react';
+import Room from "./Room";
 
-const RoomsList = () => {
+const RoomsFilter = ({rooms}) => {
+
+    if (!rooms.length) {
+        return (
+            <div className="empy-search">
+                <h3>Unfortunately no rooms matched your search parameters</h3>
+            </div>
+        )
+    }
     return (
-        <div>
-            hello roomlist
-        </div>
+        <section className="roomslist">
+            <div className="roomslist-center">
+                {rooms.map(item => {
+                    return <Room key={item.id} room={item}/>
+                })}
+            </div>
+        </section>
     );
 };
 
-export default RoomsList;
+export default RoomsFilter;
